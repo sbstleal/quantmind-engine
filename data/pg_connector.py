@@ -23,13 +23,19 @@ class PostgresConnector:
                 print(f"❌ Arquivo SQL não encontrado em: {sql_file_path}")
                 return
 
-            with open(sql_file_path, 'r') as f:
+            # ALTERAÇÃO AQUI: Adicione o encoding explicitamente
+            with open(sql_file_path, 'r', encoding='utf-8') as f:
                 sql_script = f.read()
             
             with self.conn.cursor() as cur:
                 cur.execute(sql_script)
                 self.conn.commit()
                 print("✅ Estrutura do Banco de Dados pronta (Schema e Tabelas).")
+        except UnicodeDecodeError:
+            # Caso o arquivo não seja UTF-8, tenta ler em Latin-1
+            with open(sql_file_path, 'r', encoding='latin-1') as f:
+                sql_script = f.read()
+            # ... repete a lógica de execução ...
         except Exception as e:
             print(f"❌ Erro ao inicializar banco: {e}")
             self.conn.rollback()
