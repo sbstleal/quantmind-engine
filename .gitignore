@@ -1,0 +1,38 @@
+# --- Ambientes Virtuais (Python) ---
+venv/
+.venv/
+env/
+bin/
+lib/
+include/
+share/
+pyvenv.cfg
+
+# --- Variáveis de Ambiente e Segredos (CRÍTICO) ---
+# Nunca suba suas senhas do PostgreSQL para o GitHub!
+.env
+
+# --- Cache do Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# --- Ciência de Dados e Jupyter ---
+.ipynb_checkpoints
+.jupyter
+*.ipynb_checkpoints/*
+
+# --- Logs e Dados Temporários ---
+*.log
+data/*.csv
+data/*.xlsx
+!data/.gitkeep  # Mantém a pasta 'data' mas ignora os arquivos nela
+
+# --- Sistema Operacional ---
+.DS_Store
+Thumbs.db
+
+# --- IDEs (VS Code / PyCharm) ---
+.vscode/
+.idea/
